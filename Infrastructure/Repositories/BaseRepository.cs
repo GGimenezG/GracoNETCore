@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core;
+using Core.Interfaces.Repositorios;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 

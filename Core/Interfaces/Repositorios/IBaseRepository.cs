@@ -1,4 +1,4 @@
-namespace Core;
+namespace Core.Interfaces.Repositorios;
     public interface IBaseRepository<TEntity> where TEntity : class {
         ValueTask<TEntity> GetByIdAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();

@@ -33,6 +33,7 @@ namespace Infrastructure.Data.Configurations
             builder.Property(p => p.resistencia).IsRequired();
             builder.Property(p => p.defensa).IsRequired();
             builder.Property(p => p.experiencia).IsRequired();
+            builder.Property(p => p.nivel).IsRequired();
 
 
             builder

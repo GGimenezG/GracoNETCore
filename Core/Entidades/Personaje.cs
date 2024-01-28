@@ -11,5 +11,6 @@
         public int resistencia {get;set;}
         public int defensa {get;set;}
         public double experiencia {get;set;}
+        public int nivel {get;set;}
     }
 
