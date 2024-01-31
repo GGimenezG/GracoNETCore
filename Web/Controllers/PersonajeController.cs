@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Entidades;
-using Core.Servicios;
-using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Core.Entidades;
 using Services.Services;
+using Infrastructure.Data;
+using Core.Servicios;
 
 namespace Web.Controllers
 {
@@ -14,43 +14,24 @@ namespace Web.Controllers
     [Route("api/[controller]")]
     public class PersonajeController : ControllerBase
     {
+        private IPersonajeService _servicio;
 
-/*        private readonly PersonajeService _personajeService;
-        private readonly UnitOfWork _unitOfWork;
-        private readonly AppDbContext _db;
-        public PersonajeController(){
-            _db = new AppDbContext(new DbContextOptions<AppDbContext>(){
-                
-            });
-            _unitOfWork = new UnitOfWork();
-            _personajeService = new PersonajeService(_unitOfWork);
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Personaje>>> Get()
-        {
-            var personajes = 
-                        await _personajeService.GetAll();
-
-            
-            return Ok(personajes);
-        }
-
-        */
-
-        private readonly IPersonajeService _personajeService;
         public PersonajeController(IPersonajeService personajeService){
-            _personajeService = personajeService;
+           _servicio = personajeService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Personaje>>> Get()
-        {
-            var personajes = 
-                        await _personajeService.GetAll();
+        public async Task<ActionResult<IEnumerable<Personaje>>> Get(){
 
-            
-            return Ok(personajes);
+            var Personajes = await _servicio.GetAll();
+
+            return Ok(Personajes);
+        }
+
+        public async Task<ActionResult<IEnumerable<Personaje>>> Get(int id){
+
+            var Personajes = await _servicio.GetPersonajeById(id);
+
+            return Ok(Personajes);
         }
     }
 }
