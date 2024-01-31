@@ -15,14 +15,14 @@ namespace Web.Controllers
     public class PersonajeController : ControllerBase
     {
 
-       private readonly PersonajeService _personajeService;
+/*        private readonly PersonajeService _personajeService;
         private readonly UnitOfWork _unitOfWork;
         private readonly AppDbContext _db;
         public PersonajeController(){
             _db = new AppDbContext(new DbContextOptions<AppDbContext>(){
                 
             });
-            _unitOfWork = new UnitOfWork(_db);
+            _unitOfWork = new UnitOfWork();
             _personajeService = new PersonajeService(_unitOfWork);
         }
 
@@ -36,7 +36,21 @@ namespace Web.Controllers
             return Ok(personajes);
         }
 
-        
+        */
 
+        private readonly IPersonajeService _personajeService;
+        public PersonajeController(IPersonajeService personajeService){
+            _personajeService = personajeService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Personaje>>> Get()
+        {
+            var personajes = 
+                        await _personajeService.GetAll();
+
+            
+            return Ok(personajes);
+        }
     }
 }
