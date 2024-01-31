@@ -5,6 +5,7 @@ using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Services.Services;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddControllers();
 
 builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
@@ -20,12 +22,17 @@ builder.Services.AddScoped(typeof(IPersonajeRepository), typeof(PersonajeReposit
 builder.Services.AddScoped(typeof(IPersonajeService), typeof(PersonajeService));
 
 builder.Services.AddDbContext<AppDbContext>(options => 
-                    options.UseNpgsql("")
+                    options.UseNpgsql(""
+                )
+                    
             );
+/*builder.Services.AddDbContext<AppDbContext>(options => 
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
+            );*/
 
 var app = builder.Build();
 
-app.MapControllers();
+//app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
