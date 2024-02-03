@@ -20,6 +20,8 @@ namespace Web.Controllers
            _servicio = personajeService;
         }
 
+
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Personaje>>> Get(){
 
             var Personajes = await _servicio.GetAll();
@@ -27,11 +29,29 @@ namespace Web.Controllers
             return Ok(Personajes);
         }
 
+        [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Personaje>>> Get(int id){
 
             var Personajes = await _servicio.GetPersonajeById(id);
 
             return Ok(Personajes);
+        }
+
+        // POST api/<PersonajeController>
+        [HttpPost]
+        public async Task<ActionResult<Personaje>> Post([FromBody] Personaje personaje)
+        {
+            try
+            {
+                var createdPersonaje =
+                    await _servicio.CreatePersonaje(personaje);
+
+                return Ok(createdPersonaje);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
