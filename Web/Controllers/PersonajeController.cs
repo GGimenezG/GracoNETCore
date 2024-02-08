@@ -32,7 +32,7 @@ namespace Web.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Personaje>>> Get(int id){
 
-            var Personajes = await _servicio.GetPersonajeById(id);
+            var Personajes = await _servicio.GetById(id);
 
             return Ok(Personajes);
         }
@@ -44,14 +44,47 @@ namespace Web.Controllers
             try
             {
                 var createdPersonaje =
-                    await _servicio.CreatePersonaje(personaje);
+                    await _servicio.Create(personaje);
 
                 return Ok(createdPersonaje);
             }
+            catch(ArgumentException ex){
+                return Ok(new { mensaje = ex.Message});
+            }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { mensaje = ex.Message});
+        
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Personaje>> Put(int id, int otracosa, [FromBody] Personaje personaje){
+            try{
+                Personaje updatedPersonaje =
+                    await _servicio.Update(id, personaje);
+                
+                return updatedPersonaje;
+            }
+            catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<IEnumerable<Personaje>>> Delete(int id){
+
+            try{
+                await _servicio.Delete(id);
+                return Ok("Personaje eliminado");
+
+            }
+            catch(Exception ex){
+                return BadRequest(ex.Message);
+            }
+
+
+        } 
     }
 }

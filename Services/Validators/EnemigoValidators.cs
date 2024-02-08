@@ -7,38 +7,37 @@ using FluentValidation;
 
 namespace Services.Validators
 {
-    public class PersonajeValidators : AbstractValidator<Personaje>
+    public class EnemigoValidators : AbstractValidator<Enemigo>
     {
-        public PersonajeValidators()
-        {
+        public EnemigoValidators(){
             RuleFor(x => x.defensa)
                 .LessThanOrEqualTo(100)
-                .GreaterThanOrEqualTo(Personaje => Personaje.defensa);
+                .GreaterThanOrEqualTo(Enemigo => Enemigo.defensa);
 
             RuleFor(x => x.estamina)
                 .LessThanOrEqualTo(100)
-                .GreaterThanOrEqualTo(Personaje => Personaje.estamina);
+                .GreaterThanOrEqualTo(Enemigo => Enemigo.estamina);
             
             RuleFor(x => x.fuerza)
                 .LessThanOrEqualTo(100)
-                .GreaterThanOrEqualTo(Personaje => Personaje.fuerza);
+                .GreaterThanOrEqualTo(Enemigo => Enemigo.fuerza);
             
             RuleFor(x => x.inteligencia)
                 .LessThanOrEqualTo(100)
-                .GreaterThanOrEqualTo(Personaje => Personaje.inteligencia);
+                .GreaterThanOrEqualTo(Enemigo => Enemigo.inteligencia);
 
             RuleFor(x => x.resistencia)
                 .LessThanOrEqualTo(100)
-                .GreaterThanOrEqualTo(Personaje => Personaje.inteligencia)
+                .GreaterThanOrEqualTo(Enemigo => Enemigo.inteligencia)
                 .WithMessage("El valor de la resistencia esta mal, por favor vovler a ingresar");
 
             RuleFor(x => x.experiencia)
-                .LessThanOrEqualTo(Personaje => Personaje.nivel * 10 )
+                .LessThanOrEqualTo(Enemigo => Enemigo.nivel * 10 )
                 .GreaterThanOrEqualTo(0);
 
             RuleFor(x => x.nivel)
                 .LessThanOrEqualTo(99)
-                .GreaterThanOrEqualTo(Personaje => Personaje.nivel)
+                .GreaterThanOrEqualTo(Enemigo => Enemigo.nivel)
                 .WithMessage("nivel incorrecto");
                 
             RuleFor(x => x.nombre)
@@ -46,6 +45,9 @@ namespace Services.Validators
                 .MaximumLength(255);
 
             RuleFor(x => x.tipoId)
+                .GreaterThanOrEqualTo(1);
+
+            RuleFor(x => x.recompensaId)
                 .GreaterThanOrEqualTo(1);
         }
     }

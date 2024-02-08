@@ -19,25 +19,30 @@ namespace Infrastructure.Data.Configurations
             builder
                 .Property(x => x.nombre)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(270);
             
             builder
-                .Property(x => x.tipo)
-                .IsRequired()
-                .HasMaxLength(255);
+                .Property(x => x.tipoId)
+                .IsRequired();
             
             builder.Property(p => p.estamina).IsRequired();
 
             builder.Property(p => p.inteligencia).IsRequired();
-            builder.Property(p => p.fuerza).IsRequired();
+            builder.Property(p => p.fuerza);
             builder.Property(p => p.resistencia).IsRequired();
             builder.Property(p => p.defensa).IsRequired();
             builder.Property(p => p.experiencia).IsRequired();
             builder.Property(p => p.nivel).IsRequired();
-
+            builder.Property(p => p.HP).IsRequired();
+            builder.Property(p => p.MP).IsRequired();
 
             builder
-                .ToTable("Personaje");
+                .HasOne(x => x.tipo)
+                .WithMany(x=>x.Personajes)
+                .HasForeignKey(x => x.tipoId);
+
+            builder
+                .ToTable("PersonajeGG");
         }
         
     }
