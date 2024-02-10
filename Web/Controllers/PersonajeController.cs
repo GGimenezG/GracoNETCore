@@ -29,6 +29,8 @@ namespace Web.Controllers
             return Ok(Personajes);
         }
 
+
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Personaje>>> Get(int id){
 
@@ -38,6 +40,22 @@ namespace Web.Controllers
         }
 
         // POST api/<PersonajeController>
+        /// <summary>
+        /// COsas a actualizar
+        /// </summary>
+        /// <param name="id">Prueba</param>
+        /// <returns>Algo para devolver</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Todo
+        ///     {
+        ///        "id": 1,
+        ///        "name": "Item #1",
+        ///        "isComplete": true
+        ///     }
+        ///
+        /// </remarks>
         [HttpPost]
         public async Task<ActionResult<Personaje>> Post([FromBody] Personaje personaje)
         {
