@@ -20,6 +20,11 @@ namespace Web.Controllers
         }
 
 
+        /// <summary>
+        /// Búsqueda de todos los enemigos, sin filtro
+        /// </summary>
+        /// <returns></returns>
+        /// 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Enemigo>>> Get(){
 

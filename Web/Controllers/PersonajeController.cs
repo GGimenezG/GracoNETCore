@@ -30,7 +30,11 @@ namespace Web.Controllers
         }
 
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Personaje>>> Get(int id){
 
@@ -41,20 +45,26 @@ namespace Web.Controllers
 
         // POST api/<PersonajeController>
         /// <summary>
-        /// COsas a actualizar
+        /// Método para crear un nuevo personaje
         /// </summary>
-        /// <param name="id">Prueba</param>
-        /// <returns>Algo para devolver</returns>
+        /// <param name="personaje">Intancia de la clase Personaje</param>
+        /// <returns>Objeto Personaje</returns>
         /// <remarks>
-        /// Sample request:
-        ///
-        ///     POST /Todo
-        ///     {
-        ///        "id": 1,
-        ///        "name": "Item #1",
-        ///        "isComplete": true
-        ///     }
-        ///
+        /// Ejemplo de un Json Request
+        /// {
+        ///  "id": 0,
+        ///  "nombre": "string",
+        ///  "tipoId": 0,
+        ///  "estamina": 0,
+        ///  "inteligencia": 0,
+        ///  "fuerza": 0,
+        ///  "resistencia": 0,
+        ///  "defensa": 0,
+        ///  "experiencia": 0,
+        ///  "nivel": 0,
+        ///  "hp": 0,
+        ///  "mp": 0
+        ///}
         /// </remarks>
         [HttpPost]
         public async Task<ActionResult<Personaje>> Post([FromBody] Personaje personaje)
@@ -75,7 +85,13 @@ namespace Web.Controllers
         
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="otracosa"></param>
+        /// <param name="personaje"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<Personaje>> Put(int id, int otracosa, [FromBody] Personaje personaje){
             try{
@@ -89,7 +105,11 @@ namespace Web.Controllers
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<IEnumerable<Personaje>>> Delete(int id){
 

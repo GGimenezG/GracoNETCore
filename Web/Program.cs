@@ -22,13 +22,13 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "ToDo API",
-        Description = "An ASP.NET Core Web API for managing ToDo items",
+        Title = "API Gracosoft .NET CORe",
+        Description = "Aplicación elaborada durante las clases del 1 al 9 de la asignatura .Net Core, se encarga del procesamiento de la lógica de un videojuego RPG.",
         TermsOfService = new Uri("https://example.com/terms"),
         Contact = new OpenApiContact
         {
-            Name = "Example Contact",
-            Url = new Uri("https://example.com/contact")
+            Name = "Guillermo Giménez",
+            Url = new Uri("https://github.com/GGimenezG/GracoNETCore")
         },
         License = new OpenApiLicense
         {
