@@ -37,9 +37,9 @@ namespace Infrastructure.Data.Configurations
                 .WithMany()
                 .HasForeignKey(x=>x.debilContra).IsRequired();*/
 
-            builder
+            /*builder
                 .HasMany(x => x.Personajes)
-                .WithOne(x => x.tipo).HasForeignKey(x=>x.tipoId);
+                .WithOne(x => x.tipo).HasForeignKey(x=>x.tipoId);*/
 
             builder
                 .ToTable("TipoPersonajeGG");

@@ -15,11 +15,11 @@ namespace Core.Entidades
        // public int debilContra {get;set;}
         //public  TipoPersonaje debil {get;set;}
 
-        public virtual ICollection<Personaje>? Personajes {get;set;}
+        //public virtual ICollection<Personaje>? Personajes {get;set;}
         //public virtual ICollection<Enemigo>? Enemigos {get;set;}
 
         public TipoPersonaje(){
-            Personajes = new Collection<Personaje>();
+            //Personajes = new Collection<Personaje>();
             //Enemigos = new Collection<Enemigo>();
         }
     }

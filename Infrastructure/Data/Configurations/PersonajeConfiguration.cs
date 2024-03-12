@@ -38,7 +38,7 @@ namespace Infrastructure.Data.Configurations
 
             builder
                 .HasOne(x => x.tipo)
-                .WithMany(x=>x.Personajes)
+                .WithMany()
                 .HasForeignKey(x => x.tipoId);
 
             builder

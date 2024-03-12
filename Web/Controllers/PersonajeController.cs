@@ -77,7 +77,7 @@ namespace Web.Controllers
                 return Ok(createdPersonaje);
             }
             catch(ArgumentException ex){
-                return Ok(new { mensaje = ex.Message});
+                return BadRequest(new { mensaje = ex.Message});
             }
             catch (Exception ex)
             {

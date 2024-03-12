@@ -56,6 +56,7 @@ builder.Services.AddScoped(typeof(IEnemigoService), typeof(EnemigoService));
 builder.Services.AddScoped(typeof(IObjetosService), typeof(ObjetosService));
 builder.Services.AddScoped(typeof(IRecompensaService), typeof(RecompensaServices));
 builder.Services.AddScoped(typeof(ITipoPersonajeService), typeof(TipoPersonajeService));
+builder.Services.AddScoped<IUserService, UserService>();
 
 /*builder.Services.AddDbContext<AppDbContext>(options => 
                     options.UseNpgsql("Host=dpg-clupqhmg1b2c73cacl4g-a;Server=dpg-clupqhmg1b2c73cacl4g-a.oregon-postgres.render.com;Port=5432;Database=gracoapidb;Username=graco;Password=d16mVIlilx3OFVzXgb0AW5VYnTOv0pMT"
