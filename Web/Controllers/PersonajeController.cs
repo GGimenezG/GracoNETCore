@@ -7,11 +7,13 @@ using Core.Entidades;
 using Services.Services;
 using Infrastructure.Data;
 using Core.Servicios;
+using Web.Helpers;
 
 namespace Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class PersonajeController : ControllerBase
     {
         private IPersonajeService _servicio;

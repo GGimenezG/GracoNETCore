@@ -11,6 +11,8 @@ namespace Web.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IConfiguration _configuration;
+
         public UserController(IUserService userService)
         {
             _userService = userService;

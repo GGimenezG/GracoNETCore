@@ -11,15 +11,17 @@ namespace Services.Services
     {
         private List <User> _users = new List<User>
         { 
-            new User{ UserName = "Admin", Password = "Password"}
+            new User{ UserName = "Admin", Password = "Password", Id = 1}
         };
 
-        /*private readonly IConfiguration _configuration;
+        //private string _token { get; set; }
 
-        public UserService(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }*/
+        //public UserService(string token)
+        //{
+        //    _token = token;
+        //}
+
+
 
         public string Login(User user)
         {
@@ -31,12 +33,13 @@ namespace Services.Services
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("c2c3111663e00afe901d9c00ab169d36");
+            var key = Encoding.ASCII.GetBytes("6f4d75aab32aef76b24c058d1bf7b979");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserName)
+                    new Claim(ClaimTypes.Name, LoginUser.UserName),
+                    new Claim("id", LoginUser.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
